@@ -1,0 +1,18 @@
+﻿@model CategoryVM
+
+<div class="container mt-5">
+    <h1 class="text-center">Category detail</h1>
+</div>
+
+<div>
+    <h1>Name: @Model.Name</h1>
+    <h1>
+        Products:
+        @foreach (var item in Model.Products)
+        {
+            <span>@item ,</span>
+        }
+    </h1>
+</div>
+
+<a class="btn btn-primary mt-3" asp-action="Index">Back</a>

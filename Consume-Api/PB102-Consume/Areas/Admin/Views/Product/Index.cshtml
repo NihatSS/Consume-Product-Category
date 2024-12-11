@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProductVM>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <a class="btn btn-success" asp-action="Create">Add Product</a>
+    <a class="btn btn-primary" asp-action="AddCategory">Add Category To Product</a>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Categories</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Desc</td>
+                                <td>@item.Price</td>
+                                <td><img src="@item.Images.FirstOrDefault()" style="width:150px; height:100px" /></td>
+                                <td>
+                                    @if (item.Categories is null)
+                                    {
+                                        <span>none</span>
+                                    }
+                                    @foreach (var category in item.Categories)
+                                    {
+                                        <span>@category ,</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+
+                                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

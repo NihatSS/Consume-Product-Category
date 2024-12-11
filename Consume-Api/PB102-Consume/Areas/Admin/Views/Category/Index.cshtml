@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CategoryVM>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <a class="btn btn-success" asp-action="Create">Create Category</a>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Products</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    @if (item.Products is null)
+                                    {
+                                        <span>none</span>
+                                    }
+                                    else
+                                    {
+                                        @foreach (var product in item.Products.Take(4))
+                                        {
+                                            <span>@product ,</span>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+
+                                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

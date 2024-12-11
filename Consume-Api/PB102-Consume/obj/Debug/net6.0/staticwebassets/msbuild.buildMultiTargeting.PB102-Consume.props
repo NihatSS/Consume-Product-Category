@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PB102-Consume.props" />
+</Project>

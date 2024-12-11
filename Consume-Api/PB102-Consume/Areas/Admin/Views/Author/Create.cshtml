@@ -1,0 +1,33 @@
+﻿@model AuthorCreateVM
+
+<div class="container mt-5">
+    <h1 class="text-center">Create Author</h1>
+</div>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Author" asp-action="Create">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input asp-for="Name" class="form-control" id="name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="surname">Surname</label>
+        <input asp-for="Surname" class="form-control" id="surname">
+        <span class="text-danger" asp-validation-for="Surname"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" asp-for="Age" min="0" max="120" class="form-control" id="age">
+        <span class="text-danger" asp-validation-for="Age"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="photo">Image</label>
+        <input type="file" asp-for="Image" class="form-control" id="photo">
+        <span class="text-danger" asp-validation-for="Image"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

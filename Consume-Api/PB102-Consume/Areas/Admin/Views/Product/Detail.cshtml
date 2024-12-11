@@ -1,0 +1,25 @@
+﻿@model ProductVM
+
+<div class="container mt-5">
+    <h1 class="text-center">Product detail</h1>
+</div>
+
+<div>
+    <h1>Name: @Model.Name</h1>
+    <h1>Description: @Model.Desc</h1>
+    <h1>Price: @Model.Price</h1>
+    <h1>Images:</h1>
+    @foreach (var item in Model.Images)
+    {
+        <img src="@item" style="width:150px; height:100px" />
+    }
+    <h1>
+        Categories:
+        @foreach (var item in Model.Categories)
+        {
+            <span>@item ,</span>
+        }
+    </h1>
+</div>
+
+<a class="btn btn-primary mt-3" asp-action="Index">Back</a>

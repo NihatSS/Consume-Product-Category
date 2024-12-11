@@ -1,0 +1,33 @@
+﻿@model AddAuthorVM
+
+@{
+    ViewData["Title"] = "Add Author to Book";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" asp-action="AddAuthor">
+    <div class="form-group">
+        <label for="BookId">Select Book:</label>
+        <select id="BookId" name="BookId" class="form-control">
+            <option value="">Select a Book</option>
+            @foreach (var book in Model.Books)
+            {
+                <option value="@book.Id">@book.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="AuthorId">Select Author:</label>
+        <select id="AuthorId" name="AuthorId" class="form-control">
+            <option value="">Select an Author</option>
+            @foreach (var author in Model.Authors)
+            {
+                <option value="@author.Id">@author.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Author to Book</button>
+</form>
